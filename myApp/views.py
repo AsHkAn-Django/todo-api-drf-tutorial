@@ -1,5 +1,5 @@
 from rest_framework import generics, viewsets
-from .serializers import TaskSerializers
+from .serializers import TaskSerializer
 from .models import Task
 from .permissions import AuthorOnly
 
@@ -7,7 +7,7 @@ from .permissions import AuthorOnly
 
 class TaskViewSet(viewsets.ModelViewSet):
     permission_classes = (AuthorOnly,)
-    serializer_class = TaskSerializers
+    serializer_class = TaskSerializer
 
     def get_queryset(self):
         queryset = Task.objects.all()
@@ -26,6 +26,8 @@ class TaskViewSet(viewsets.ModelViewSet):
         
         return queryset
 
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
 
 # class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
