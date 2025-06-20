@@ -1,4 +1,4 @@
-# 📝 To-Do List API — (Beginner)
+# To-Do List API — (Beginner)
 
 This is a simple To-Do List API built with Django REST Framework. It's designed as a warm-up project for beginners to practice model creation, viewsets, authentication, permissions, and basic testing.
 
